@@ -1,5 +1,5 @@
 FROM php:5.6.35-apache-jessie
-MAINTAINER james.mclean@gmail.com
+LABEL maintainer="Humenius <contact@humenius.me>"
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
@@ -20,8 +20,8 @@ EXPOSE 80/tcp
 # Download SMF
 RUN mkdir -p /var/www/html \
     && cd /var/www/html \
-    && wget "https://download.simplemachines.org/index.php/smf_2-0-15_install.tar.gz" \
-    && tar zxf smf_2-0-15_install.tar.gz
+    && wget "https://download.simplemachines.org/index.php/smf_2-0-17_install.tar.gz" \
+    && tar zxf smf_2-0-17_install.tar.gz
 
 # Set the permissions SMF wants. They say 777 suggested!
 RUN chmod 777 /var/www/html/attachments \
