@@ -1,4 +1,4 @@
-FROM php:7.1.30-apache-jessie
+FROM php:apache-buster
 LABEL maintainer="LilDrunkenSmurf <jirving@lildrunkensmurf.com>"
 
 RUN apt-get update \
@@ -7,12 +7,12 @@ RUN apt-get update \
         libcurl4-openssl-dev \
         libpq-dev \
         postgresql-client \
+        apache2 \
         wget \
         curl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install \
-    mysql \
+RUN docker-php-ext-install mysqli \
     pgsql
 
 EXPOSE 80/tcp
@@ -38,5 +38,5 @@ RUN chmod 777 /var/www/html/attachments \
 # Setup the Apache config file to serve this application
 
 # Serve the application, so the user could run the install manually
-
+RUN mkdir -p /run/apache2
 CMD ["/usr/sbin/apachectl","-DFOREGROUND"]
