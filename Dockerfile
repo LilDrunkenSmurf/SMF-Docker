@@ -1,5 +1,5 @@
-FROM php:5.6.35-apache-jessie
-LABEL maintainer="Humenius <contact@humenius.me>"
+FROM php:7.1.30-apache-jessie
+LABEL maintainer="LilDrunkenSmurf <jirving@lildrunkensmurf.com>"
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
